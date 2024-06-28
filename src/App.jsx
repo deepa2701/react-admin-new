@@ -9,6 +9,17 @@ import Profile from './components/pages/user/Profile';
 import UserList from './components/pages/user/UserList';
 import ForgotPassword from './components/login/ForgotPassword';
 import Example from './Example';
+import AddBanner from './components/pages/banner/AddBanner';
+import BannerList from './components/pages/banner/BannerList';
+import AddAbout from './components/pages/aboutUs/AddAbout';
+import ListAbout from './components/pages/aboutUs/ListAbout';
+import AddRefundPolicy from './components/pages/refundpolicy/RefundPolicy';
+import RefundPolicyList from './components/pages/refundpolicy/RefundPolicyList';
+import AddHelpSupport from './components/pages/helpandsupport/Help';
+import HelpList from './components/pages/helpandsupport/HelpList';
+import TermsConditionList from './components/pages/termscondition/TermsConditionList';
+import AddTermsCondition from './components/pages/termscondition/TermsCondition';
+import EditAbout from './components/pages/aboutUs/EditAbout';
 
 
 
@@ -31,9 +42,9 @@ function App() {
           </Public>
         } />
 
-<Route path='/forgot-password' element={
+        <Route path='/forgot-password' element={
           <Public>
-            <ForgotPassword/>
+            <ForgotPassword />
           </Public>
         } />
 
@@ -64,8 +75,80 @@ function App() {
             </Protected>
           } />
 
+          <Route path='/add-banner' element={
+            <Protected>
+              <AddBanner />
+            </Protected>
+          } />
+
+          <Route path='/banner-list' element={
+            <Protected>
+              <BannerList />
+            </Protected>
+          } />
+
+          <Route path='/add-about' element={
+            <Protected>
+              <AddAbout />
+            </Protected>
+          } />
+
+          <Route path='/about-list' element={
+            <Protected>
+              <ListAbout />
+            </Protected>
+          } />
+
+<Route path='/edit-aboutus/:id' element={
+            <Protected>
+              <EditAbout />
+            </Protected>
+          } />
+
+<Route path='/add-refund-policy' element={
+          <Protected>
+            <AddRefundPolicy />
+          </Protected>
+        } />
+
+
+        <Route path='/refund-policy-list' element={
+          <Protected>
+            < RefundPolicyList/>
+          </Protected>
+        } />
+
+<Route path='/add-help-support' element={
+          <Protected>
+            <AddHelpSupport />
+          </Protected>
+        } />
+
+
+        <Route path='/help-support-list' element={
+          <Protected>
+            <HelpList />
+          </Protected>
+        } />
+
+<Route path='/terms-condition-list' element={
+          <Protected>
+            <TermsConditionList />
+          </Protected>
+        } />
+
+
+        <Route path='/add-terms-condition' element={
+          <Protected>
+            <AddTermsCondition/>
+          </Protected>
+        } />
+
+
+
         </Route>
 
+        
         <Route path='/logout' element={<Logout />} />
 
         <Route path='/example' element={<Example />} />
