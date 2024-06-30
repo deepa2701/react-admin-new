@@ -11,15 +11,25 @@ import ForgotPassword from './components/login/ForgotPassword';
 import Example from './Example';
 import AddBanner from './components/pages/banner/AddBanner';
 import BannerList from './components/pages/banner/BannerList';
-import AddAbout from './components/pages/aboutUs/AddAbout';
-import ListAbout from './components/pages/aboutUs/ListAbout';
-import AddRefundPolicy from './components/pages/refundpolicy/RefundPolicy';
-import RefundPolicyList from './components/pages/refundpolicy/RefundPolicyList';
-import AddHelpSupport from './components/pages/helpandsupport/Help';
-import HelpList from './components/pages/helpandsupport/HelpList';
-import TermsConditionList from './components/pages/termscondition/TermsConditionList';
-import AddTermsCondition from './components/pages/termscondition/TermsCondition';
-import EditAbout from './components/pages/aboutUs/EditAbout';
+// import AddAbout from './components/pages/aboutUs/AddAbout';
+// import ListAbout from './components/pages/aboutUs/ListAbout';
+// import AddRefundPolicy from './components/pages/refundpolicy/RefundPolicy';
+// import RefundPolicyList from './components/pages/refundpolicy/RefundPolicyList';
+// import AddHelpSupport from './components/pages/helpandsupport/Help';
+// import HelpList from './components/pages/helpandsupport/HelpList';
+// import TermsConditionList from './components/pages/termscondition/TermsConditionList';
+// import AddTermsCondition from './components/pages/termscondition/TermsCondition';
+// import EditAbout from './components/pages/aboutUs/EditAbout';
+import CreateJackpot from './components/pages/jackpot/CreateJackpot';
+// import EditRefundPolicy from './components/pages/refundpolicy/EditRefundPolicy';
+// import EditHelp from './components/pages/helpandsupport/EditHelp';
+// import EditTermsCondition from './components/pages/termscondition/EditTermsCondition';
+import About from './components/setting/About';
+import RefundPolicy from './components/setting/RefundPolicy';
+import HelpSupport from './components/setting/HelpSupport';
+import TermsCondition from './components/setting/TermsCondition';
+import JackpotList from './components/pages/jackpot/JackpotList';
+import KycList from './components/pages/kyc/KycList';
 
 
 
@@ -75,6 +85,18 @@ function App() {
             </Protected>
           } />
 
+          <Route path='/create-jackpot' element={
+            <Protected>
+              < CreateJackpot />
+            </Protected>
+          } />
+
+<Route path='/jackpot-list' element={
+            <Protected>
+              < JackpotList />
+            </Protected>
+          } />
+
           <Route path='/add-banner' element={
             <Protected>
               <AddBanner />
@@ -87,68 +109,93 @@ function App() {
             </Protected>
           } />
 
-          <Route path='/add-about' element={
+          <Route path='/about-us' element={
             <Protected>
-              <AddAbout />
+              <About />
             </Protected>
           } />
 
-          <Route path='/about-list' element={
+          {/* <Route path='/about-list' element={
             <Protected>
               <ListAbout />
             </Protected>
           } />
 
-<Route path='/edit-aboutus/:id' element={
+          <Route path='/edit-aboutus/:id' element={
             <Protected>
               <EditAbout />
             </Protected>
+          } /> */}
+
+          <Route path='/refund-policy' element={
+            <Protected>
+              <RefundPolicy />
+            </Protected>
           } />
 
-<Route path='/add-refund-policy' element={
-          <Protected>
-            <AddRefundPolicy />
-          </Protected>
-        } />
+
+          {/* <Route path='/refund-policy-list' element={
+            <Protected>
+              < RefundPolicyList />
+            </Protected>
+          } />
+
+          <Route path='/edit-refunnd-policy/:id' element={
+            <Protected>
+              <EditRefundPolicy />
+            </Protected>
+          } /> */}
+
+          <Route path='/help-support' element={
+            <Protected>
+              <HelpSupport />
+            </Protected>
+          } />
 
 
-        <Route path='/refund-policy-list' element={
-          <Protected>
-            < RefundPolicyList/>
-          </Protected>
-        } />
+          {/* <Route path='/help-support-list' element={
+            <Protected>
+              <HelpList />
+            </Protected>
+          } />
 
-<Route path='/add-help-support' element={
-          <Protected>
-            <AddHelpSupport />
-          </Protected>
-        } />
+          <Route path='/edit-help-support/:id' element={
+            <Protected>
+              <EditHelp />
+            </Protected>
+          } /> */}
 
-
-        <Route path='/help-support-list' element={
-          <Protected>
-            <HelpList />
-          </Protected>
-        } />
-
-<Route path='/terms-condition-list' element={
-          <Protected>
-            <TermsConditionList />
-          </Protected>
-        } />
+          <Route path='/terms-condition' element={
+            <Protected>
+              <TermsCondition />
+            </Protected>
+          } />
 
 
-        <Route path='/add-terms-condition' element={
-          <Protected>
-            <AddTermsCondition/>
-          </Protected>
-        } />
+          {/* <Route path='/add-terms-condition' element={
+            <Protected>
+              <AddTermsCondition />
+            </Protected>
+          } />
+
+          <Route path='/edit-terms-condition/:id' element={
+            <Protected>
+              <EditTermsCondition />
+            </Protected>
+          } /> */}
+
+
+<Route path='/kyc' element={
+            <Protected>
+              <KycList />
+            </Protected>
+          } /> 
 
 
 
         </Route>
 
-        
+
         <Route path='/logout' element={<Logout />} />
 
         <Route path='/example' element={<Example />} />

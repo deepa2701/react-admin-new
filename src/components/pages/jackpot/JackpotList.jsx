@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import DataTable from "react-data-table-component";
+import DataTable from 'react-data-table-component';
 import apiData from '../../../axiosConfig';
 import { Link } from 'react-router-dom';
 
-function BannerList() {
-    const [banners, setBanners] = useState(null);
-    const [loading, setLoading] = useState(true); // Set initial loading state to true
+function JackpotList() {
+    const [jackpot, setJackpot] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const token = localStorage.getItem('token'); // Retrieve the token directly as a string
 
-        apiData.get("/get-banner", {
+        apiData.get("/jackpots", {
             headers: {
                 'Authorization': `Bearer ${token}` // Include the token in the Authorization header
             }
         })
         .then(response => {
             console.log(response.data); // Log the entire response to understand its structure
-            setBanners(response.data.banners);
-            setLoading(false); // Stop loading
+            setJackpot(response.data.jackpots);
+            setLoading(false);
         })
         .catch(error => {
             console.error("There was an error!", error);
-            setLoading(false); // Stop loading even if there's an error
+            setLoading(false);
         });
     }, []);
 
@@ -34,40 +34,56 @@ function BannerList() {
             width: "70px" // Adjust width as needed
         },
         {
+            name: "Name",
+            selector: row => row.name,
+        },
+        {
             name: "Image",
-            selector: row => row.banner_image,
+            selector: row => row.jackpot_image,
             cell: row => (
-                <img src={row.banner_image} alt="Profile" style={{height:'60px',width:'60px',borderRadius:'10px',padding:'4px'}}/>
+                <img src={row.jackpot_image} alt="Profile" style={{height:'60px',width:'60px',borderRadius:'10px',padding:'4px'}}/>
             )
         },
         {
-            name: "Action",
+            name: "Description",
+            selector: row => row.description,
+        },
+        {
+            name: "Starting Date",
+            selector: row => row.starting_date,
+        },
+        {
+            name: "Prize Pool",
+            selector: row => row.prize_pool,
+        },
+        {
+            name: "Join Count",
+            selector: row => row.join_count,
+        },
+        {
+            name: "Winning Amount",
+            selector: row => row.wining_amount,
+        },
+        {
+            name: "Delete",
             cell: row => (
-                <>
-                    <Link to="/edit-user" className="btn btn-primary me-2" onClick={() => handleEdit(row.id)}>Edit</Link>
-                    <button className="btn btn-danger" onClick={() => handleDelete(row.id)}>Delete</button>
-                </>
+              <button className="btn btn-danger" onClick={() => handleDelete(row.id)}>Delete</button>
             )
         }
     ];
 
-    const handleEdit = (id) => {
-        console.log("Edit user with ID:", id);
-        // Implement edit functionality here
-    };
-
     const handleDelete = (id) => {
         const token = localStorage.getItem('token'); // Retrieve the token directly as a string
 
-        apiData.get(`/delete-banner?id=${id}`, {
+        apiData.get(`/delete-jackpot?id=${id}`, {
             headers: {
                 'Authorization': `Bearer ${token}` // Include the token in the Authorization header
             }
         })
         .then(response => {
-            console.log("Deleted banner with ID:", id);
-            // Remove the deleted banner from the state
-            setBanners(banners.filter(banner => banner.id !== id));
+            console.log("Deleted jackpot with ID:", id);
+            // Remove the deleted jackpot from the state
+            setJackpot(jackpot.filter(jackpot => jackpot.id !== id));
         })
         .catch(error => {
             console.error("There was an error!", error);
@@ -75,10 +91,10 @@ function BannerList() {
     };
 
     const handleChange = (e) => {
-        const newData = banners.filter(row =>
+        const newData = jackpot.filter(row =>
             row.name.toLowerCase().includes(e.target.value.toLowerCase())
         );
-        setBanners(newData);
+        setJackpot(newData);
     };
 
     return (
@@ -93,7 +109,7 @@ function BannerList() {
                             <div className="col-12">
                                 <div className="card">
                                     <div className="card-header border-bottom">
-                                        <h4 className="card-title">Banner List</h4>
+                                        <h4 className="card-title">Jackpot List</h4>
                                     </div>
                                     <div className='row d-flex justify-content-end'>
                                         <div className='col-md-3'>
@@ -106,14 +122,15 @@ function BannerList() {
                                         </div>
                                     </div>
                                     {loading ? (
-                                                <div className="d-flex justify-content-center align-items-center" style={{ height: '200px' }}>
-                                                <div className="spinner-border" role="status">
-                                                </div>
-                                              </div>
-                                            ) : (
+                                        <div className="d-flex justify-content-center align-items-center" style={{ height: '200px' }}>
+                                            <div className="spinner-border" role="status">
+                                                {/* <span className="sr-only">Loading...</span> */}
+                                            </div>
+                                        </div>
+                                    ) : (
                                         <DataTable
                                             columns={columns}
-                                            data={banners}
+                                            data={jackpot}
                                             fixedHeader
                                             pagination
                                             selectableRows
@@ -130,4 +147,4 @@ function BannerList() {
     );
 }
 
-export default BannerList;
+export default JackpotList;

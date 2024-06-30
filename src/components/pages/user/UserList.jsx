@@ -7,31 +7,34 @@ import { Link } from 'react-router-dom';
 
 function UserList() {
 
-// const [users, setUsers] = useState(null);
+  // const [users, setUsers] = useState(null);
 
-const [users, setUsers] = useState(null);
-useEffect(() => {
-
-
-        const token = localStorage.getItem('token'); // Retrieve the token directly as a string
-        console.log("token1212", token)
-
-        apiData.get("/get-user", {
-            headers: {
-                'Authorization': `Bearer ${token}` // Include the token in the Authorization header
-            }
-
-        })
+  const [users, setUsers] = useState(null);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
 
 
-        .then(response => {
-            console.log(response.data); // Log the entire response to understand its structure
-            setUsers(response.data.users);
-        })
-        .catch(error => {
-            console.error("There was an error!", error);
-        });
-}, []);
+    const token = localStorage.getItem('token'); // Retrieve the token directly as a string
+    console.log("token1212", token)
+
+    apiData.get("/get-user", {
+      headers: {
+        'Authorization': `Bearer ${token}` // Include the token in the Authorization header
+      }
+
+    })
+
+
+      .then(response => {
+        console.log(response.data); // Log the entire response to understand its structure
+        setUsers(response.data.users);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error("There was an error!", error);
+        setLoading(false);
+      });
+  }, []);
 
 
   const columns = [
@@ -57,7 +60,7 @@ useEffect(() => {
       selector: row => row.profileImagePath,
       cell: row => (
         <>
-           <img src={row.profileImagePath} alt="Profile" style={{height:'60px',width:'60px',borderRadius:'10px',padding:'4px'}}/>
+          <img src={row.profileImagePath} alt="Profile" style={{ height: '60px', width: '60px', borderRadius: '10px', padding: '4px' }} />
         </>
       )
     },
@@ -65,39 +68,39 @@ useEffect(() => {
       name: "Name",
       selector: row => row.name,
       cell: row => (
-            <>
-              <Link to={`/userdetails/${row.name}`} className="me-2">
-                {row.name}
-              </Link>
-            </>
-          )
+        <>
+          <Link to={`/userdetails/${row.name}`} className="me-2">
+            {row.name}
+          </Link>
+        </>
+      )
     },
     {
       name: "Contact Number",
       selector: row => row.number
     },
-	
-	
+
+
     {
-        name: "Action",
-        cell: row => (
-          <>
-            <Link to="/edit-user" className="btn btn-primary  me-2" onClick={() => handleEdit(row.id)}>Edit</Link>
-          </>
-        )
-      },
-      {
-        name: "Action",
-        cell: row => (
-          <>
-            <button className="btn btn-danger " onClick={() => handleDelete(row.id)}>Delete</button>
-          </>
-        )
-      }
+      name: "Action",
+      cell: row => (
+        <>
+          <Link to="/edit-user" className="btn btn-primary  me-2" onClick={() => handleEdit(row.id)}>Edit</Link>
+        </>
+      )
+    },
+    {
+      name: "Action",
+      cell: row => (
+        <>
+          <button className="btn btn-danger " onClick={() => handleDelete(row.id)}>Delete</button>
+        </>
+      )
+    }
   ];
 
 
- 
+
   const handleChange = (e) => {
     // console.log("dddddddddddd")
     const newData = filterrecords.filter(row =>
@@ -107,9 +110,9 @@ useEffect(() => {
   }
 
 
-  
+
   const handleEdit = (id) => {
-   
+
     console.log("Edit user with ID:", id);
     // Implement edit functionality here
   };
@@ -120,9 +123,9 @@ useEffect(() => {
   };
 
   return (
-    
+
     <>
-    
+
       <div className="app-content content">
         <div className="content-overlay"></div>
         <div className="header-navbar-shadow"></div>
@@ -147,29 +150,24 @@ useEffect(() => {
                         />
                       </div>
                     </div>
+                    {loading ? (
+                      <div className="d-flex justify-content-center align-items-center" style={{ height: '200px' }}>
+                        <div className="spinner-border" role="status">
+                        </div>
+                      </div>
+                    ) : (
 
-                    {users !== null && ( // Conditionally render DataTable if users is not null
-                    <DataTable
-                      columns={columns}
-                      data={users}
-                      fixedHeader
-                      pagination
-                      selectableRows
-                      noHeader
-                    />
-                  )}
+                      <DataTable
+                        columns={columns}
+                        data={users}
+                        fixedHeader
+                        pagination
+                        selectableRows
+                        noHeader
+                      />
+                    )
 
-
-                    {/* <DataTable
-                      columns={columns}
-                      data={users}
-                      fixedHeader
-                      title="React-Data-Table-Component Tutorial"
-                      pagination
-                      selectableRows
-
-                      
-                    /> */}
+                    }
 
 
                   </div>

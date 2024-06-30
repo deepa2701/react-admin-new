@@ -736,6 +736,13 @@ footer.footer-border {
     
     background: #fe5b04; } */
 
+.nav-item .open{
+      background: whitesmoke !important;
+    margin: 10px !important;
+    padding: 6px !important;
+    border-radius: 7px !important;
+
+    }
 .main-menu.menu-light .navigation li.nav-item ul.menu-content li a:hover > * {
   transition: transform 0.25s ease;
   transform: translateX(5px); }

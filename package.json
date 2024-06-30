@@ -15,7 +15,8 @@
     "react-data-table-component": "^7.6.2",
     "react-dom": "^18.2.0",
     "react-quill": "^2.0.0",
-    "react-router-dom": "^6.23.1"
+    "react-router-dom": "^6.23.1",
+    "react-switch": "^7.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",

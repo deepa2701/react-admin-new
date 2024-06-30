@@ -8,6 +8,7 @@ function AddBanner() {
     });
     const [errors, setErrors] = useState({});
     const [successMessage, setSuccessMessage] = useState('');
+    const [loading, setLoading] = useState('');
 
     // Handle form input changes
     const handleChange = (e) => {
@@ -26,6 +27,7 @@ function AddBanner() {
     };
 
     const handleSubmit = async (e) => {
+        setLoading(true);
         e.preventDefault();
         const token = localStorage.getItem('token');
         console.log("token", token);
@@ -66,6 +68,9 @@ function AddBanner() {
                 console.log(error.response.data);
             }
         }
+        finally{
+            setLoading(false);
+        }
     };
 
     return (
@@ -89,6 +94,12 @@ function AddBanner() {
                                 <div className="col-md-12 col-12">
                                     <div className="card">
                                         <div className="card-body">
+                                        {loading ? (
+                                                <div className="d-flex justify-content-center align-items-center" style={{ height: '200px' }}>
+                                                <div className="spinner-border" role="status">
+                                                </div>
+                                              </div>
+                                            ) : (
                                             <form className="form form-horizontal" onSubmit={handleSubmit}>
                                                 <div className="row">
                                                     <div className="col-12">
@@ -136,6 +147,7 @@ function AddBanner() {
                                                     {successMessage && <div className="col-12 mt-1"><span style={{ color: 'green' }}>{successMessage}</span></div>}
                                                 </div>
                                             </form>
+                                            )}
                                         </div>
                                     </div>
                                 </div>

@@ -34,7 +34,7 @@ function Sidebar() {
                             <ul className="menu-content">
                                 <li><Link to="/create-jackpot" className="d-flex align-items-center" ><i data-feather="circle"></i><span className="menu-item text-truncate" data-i18n="Roles">Create Jackpot</span></Link>
                                 </li>
-                                <li><Link to="/list-jackpot" className="d-flex align-items-center"><i data-feather="circle"></i><span className="menu-item text-truncate" data-i18n="Permission">Jackpot List</span></Link>
+                                <li><Link to="/jackpot-list" className="d-flex align-items-center"><i data-feather="circle"></i><span className="menu-item text-truncate" data-i18n="Permission">Jackpot List</span></Link>
                                 </li>
                             </ul>
                         </li>
@@ -58,7 +58,7 @@ function Sidebar() {
 
                             </ul>
                         </li>
-                        <li className=" nav-item"><a className="d-flex align-items-center"><i data-feather="shopping-cart"></i><span className="menu-title text-truncate" data-i18n="eCommerce">AboutUs Master</span></a>
+                        {/* <li className=" nav-item"><a className="d-flex align-items-center"><i data-feather="shopping-cart"></i><span className="menu-title text-truncate" data-i18n="eCommerce">AboutUs Master</span></a>
                             <ul className="menu-content">
                             <li><Link to="/add-about" className="d-flex align-items-center"><i data-feather="circle"></i><span className="menu-item text-truncate" data-i18n="Shop">Add AboutUs</span></Link>
                             </li>
@@ -66,8 +66,8 @@ function Sidebar() {
                                 </li>
 
                             </ul>
-                        </li>
-                        <li className=" nav-item"><a className="d-flex align-items-center"><i data-feather="shopping-cart"></i><span className="menu-title text-truncate" data-i18n="eCommerce">Refund Policy Master</span></a>
+                        </li> */}
+                        {/* <li className=" nav-item"><a className="d-flex align-items-center"><i data-feather="shopping-cart"></i><span className="menu-title text-truncate" data-i18n="eCommerce">Refund Policy Master</span></a>
                             <ul className="menu-content">
                             <li><Link to="/add-refund-policy" className="d-flex align-items-center"><i data-feather="circle"></i><span className="menu-item text-truncate" data-i18n="Shop">Add Refund Policy</span></Link>
                             </li>
@@ -75,8 +75,8 @@ function Sidebar() {
                                 </li>
 
                             </ul>
-                        </li>
-                        <li className=" nav-item"><a className="d-flex align-items-center"><i data-feather="shopping-cart"></i><span className="menu-title text-truncate" data-i18n="eCommerce">Terms And Condition</span></a>
+                        </li> */}
+                        {/* <li className=" nav-item"><a className="d-flex align-items-center"><i data-feather="shopping-cart"></i><span className="menu-title text-truncate" data-i18n="eCommerce">Terms And Condition</span></a>
                             <ul className="menu-content">
                             <li><Link to="/add-terms-condition" className="d-flex align-items-center"><i data-feather="circle"></i><span className="menu-item text-truncate" data-i18n="Shop">Add Terms & Condition</span></Link>
                             </li>
@@ -84,8 +84,8 @@ function Sidebar() {
                                 </li>
 
                             </ul>
-                        </li>
-                        <li className=" nav-item"><a className="d-flex align-items-center"><i data-feather="shopping-cart"></i><span className="menu-title text-truncate" data-i18n="eCommerce">Help & Support</span></a>
+                        </li> */}
+                        {/* <li className=" nav-item"><a className="d-flex align-items-center"><i data-feather="shopping-cart"></i><span className="menu-title text-truncate" data-i18n="eCommerce">Help & Support</span></a>
                             <ul className="menu-content">
                             <li><Link to="/add-help-support" className="d-flex align-items-center"><i data-feather="circle"></i><span className="menu-item text-truncate" data-i18n="Shop">Add Help & Support</span></Link>
                             </li>
@@ -93,17 +93,17 @@ function Sidebar() {
                                 </li>
 
                             </ul>
-                        </li>
+                        </li> */}
                         <li className=" nav-item"><a className="d-flex align-items-center"><i data-feather="user"></i><span className="menu-title text-truncate" data-i18n="User">Setting</span></a>
                             <ul className="menu-content">
-                                <li><Link to="/" className="d-flex align-items-center"><i data-feather="circle"></i><span className="menu-item text-truncate" data-i18n="List">Help & Support </span></Link>
+                                <li><Link to="/help-support" className="d-flex align-items-center"><i data-feather="circle"></i><span className="menu-item text-truncate" data-i18n="List">Help & Support </span></Link>
                                 </li>
-                                <li><Link to="/" className="d-flex align-items-center"><i data-feather="circle"></i><span className="menu-item text-truncate" data-i18n="View">About Us</span></Link>
+                                <li><Link to="/about-us" className="d-flex align-items-center"><i data-feather="circle"></i><span className="menu-item text-truncate" data-i18n="View">About Us</span></Link>
 
                                 </li>
-                                <li><Link to="/" className="d-flex align-items-center"><i data-feather="circle"></i><span className="menu-item text-truncate" data-i18n="List">Refund Policy </span></Link>
+                                <li><Link to="/refund-policy" className="d-flex align-items-center"><i data-feather="circle"></i><span className="menu-item text-truncate" data-i18n="List">Refund Policy </span></Link>
                                 </li>
-                                <li><Link to="/" className="d-flex align-items-center"><i data-feather="circle"></i><span className="menu-item text-truncate" data-i18n="List">Terms & Conditions </span></Link>
+                                <li><Link to="/terms-condition" className="d-flex align-items-center"><i data-feather="circle"></i><span className="menu-item text-truncate" data-i18n="List">Terms & Conditions </span></Link>
                                 </li>
                             </ul>
                         </li>
@@ -114,21 +114,21 @@ function Sidebar() {
                                 </li>
                             </ul>
                         </li>
-                        <li className=" nav-item"><a className="d-flex align-items-center"><i data-feather="user-check"></i><span className="menu-title text-truncate" data-i18n="Authentication">Verification KYC</span></a>
+                        <li className=" nav-item"><a className="d-flex align-items-center"><i data-feather="user-check"></i><span className="menu-title text-truncate" data-i18n="Authentication"> KYC Master</span></a>
                             <ul className="menu-content">
-                                <li><Link to="/" className="d-flex align-items-center"><i data-feather="circle"></i><span className="menu-item text-truncate" data-i18n="Login">KYC Verification</span></Link>
+                                <li><Link to="/kyc" className="d-flex align-items-center"><i data-feather="circle"></i><span className="menu-item text-truncate" data-i18n="Login">KYC Verification</span></Link>
                                 </li>
 
                             </ul>
                         </li>
 
-                        <li className=" nav-item"><a className="d-flex align-items-center"><i data-feather="user-check"></i><span className="menu-title text-truncate" data-i18n="Authentication">Image Banner</span></a>
+                        {/* <li className=" nav-item"><a className="d-flex align-items-center"><i data-feather="user-check"></i><span className="menu-title text-truncate" data-i18n="Authentication">Image Banner</span></a>
                             <ul className="menu-content">
                                 <li><Link to="/" className="d-flex align-items-center"><i data-feather="circle"></i><span className="menu-item text-truncate" data-i18n="Login">Add Image Banner</span></Link>
                                 </li>
 
                             </ul>
-                        </li>
+                        </li> */}
 
 
                     </ul>

@@ -1,42 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import apiData from '../../../axiosConfig';
 
 const EditAbout = () => {
-  const location = useLocation();
-  const history = useHistory();
-  const { id, text } = location.state || { id: null, text: '' };
-
-  useEffect(() => {
-    if (!id) {
-      // Redirect to another page or handle the error
-      history.push('/dashboard');
-    }
-  }, [id, history]);
-
   const [formData, setFormData] = useState({
-    editorHtml: text || '',
+    editorHtml: '',
   });
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState('');
-  const [theme] = useState('snow'); // Default theme is 'snow'
+  const [text, setText] = useState('');
+  const [id, setId] = useState('');
 
-  // Handle changes in input fields
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    apiData.get("/about-us", {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then(response => {
+      setText(response.data.about_us[0].text);
+      setId(response.data.about_us[0].id);
+      setFormData({ editorHtml: response.data.about_us[0].text });
+    })
+    .catch(error => {
+      console.error("There was an error!", error);
+    });
+  }, []);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
     if (value) {
-      setErrors({ ...errors, [name]: '' }); // Clear error message if there's content
+      setErrors({ ...errors, [name]: '' });
     }
   };
 
-  // Handle Quill editor changes
   const handleEditorChange = (html) => {
     setFormData({ ...formData, editorHtml: html });
     if (html) {
-      setErrors({ ...errors, editorHtml: '' }); // Clear error message if there's content
+      setErrors({ ...errors, editorHtml: '' });
     }
   };
 
@@ -47,24 +52,22 @@ const EditAbout = () => {
     const token = localStorage.getItem('token');
     const data = new FormData();
     data.append('text', editorHtml);
+    data.append('id', id);
 
     try {
-      const response = await apiData.post(`/update-about-us/${id}`, data, {
+      const response = await apiData.post(`/update-about-us`, data, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
         },
       });
-      setSuccessMessage('Data successfully submitted!'); // Set success message
-      setFormData({ editorHtml: '' }); // Reset form data
-      console.log('response', response);
+      setSuccessMessage('Data successfully submitted!');
     } catch (error) {
       if (error.response && error.response.data && error.response.data.errors) {
-        // Update errors state with API response errors
         const apiErrors = error.response.data.errors;
         let updatedErrors = {};
         for (let key in apiErrors) {
-          updatedErrors[key] = apiErrors[key]; // Assuming errors are returned as an object
+          updatedErrors[key] = apiErrors[key];
         }
         setErrors(updatedErrors);
       } else {
@@ -98,13 +101,12 @@ const EditAbout = () => {
                         <div className="row">
                           <div className="col-12">
                             <ReactQuill
-                              theme={theme}
+                              theme="snow"
                               onChange={handleEditorChange}
                               value={formData.editorHtml}
                               modules={EditAbout.modules}
                               formats={EditAbout.formats}
                               bounds={'.app'}
-                              // placeholder={props.placeholder || 'Write something...'}
                             />
                             {errors.text && <span className="validation_error_message" style={{ color: 'red' }}>{errors.text}</span>}
                           </div>
@@ -126,7 +128,6 @@ const EditAbout = () => {
   );
 };
 
-// Modules and formats need to be defined
 EditAbout.modules = {
   toolbar: [
     [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
@@ -134,7 +135,7 @@ EditAbout.modules = {
     ['bold', 'italic', 'underline', 'strike', 'blockquote'],
     [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
     ['link', 'image', 'video'],
-    ['clean'] // remove formatting button
+    ['clean']
   ],
 };
 

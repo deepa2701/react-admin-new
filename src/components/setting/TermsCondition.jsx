@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import apiData from '../../../axiosConfig';
+import apiData from '../../axiosConfig';
 
-const AddAbout = (props) => {
+const TermsCondition = (props) => {
     const [formData, setFormData] = useState({
         editorHtml: '',
         // title: '',
@@ -12,19 +12,24 @@ const AddAbout = (props) => {
     const [errors, setErrors] = useState({});
     const [successMessage, setSuccessMessage] = useState('');
     const [theme] = useState('snow'); // Default theme is 'snow'
+    const [loading, setLoading] = useState('');
 
     // Function to fetch data from the API
     const fetchData = async () => {
+        setLoading(true);
         try {
             const token = localStorage.getItem('token');
-            const response = await apiData.get('/about-us', {
+            const response = await apiData.get('/terms-and-conditions', {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
             });
-            setFormData({ ...formData, editorHtml: response.data.about_us.text });
+            setFormData({ ...formData, editorHtml: response.data.terms_and_conditions.text });
         } catch (error) {
             console.error("Error fetching data", error);
+        }
+        finally{
+            setLoading(false);
         }
     };
 
@@ -61,7 +66,7 @@ const AddAbout = (props) => {
         // data.append('description', description);
 
         try {
-            const response = await apiData.post('/about-us', data, {
+            const response = await apiData.post('/terms-and-condetion', data, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data',
@@ -97,7 +102,7 @@ const AddAbout = (props) => {
                         <div className="content-header-left col-md-9 col-12 mb-2">
                             <div className="row breadcrumbs-top">
                                 <div className="col-12">
-                                    <h2 className="content-header-title float-start mb-0">About Us</h2>
+                                    <h2 className="content-header-title float-start mb-0">Terms & Condition</h2>
                                 </div>
                             </div>
                         </div>
@@ -108,6 +113,12 @@ const AddAbout = (props) => {
                                 <div className="col-md-12 col-12">
                                     <div className="card">
                                         <div className="card-body">
+                                        {loading ? (
+                                                <div className="d-flex justify-content-center align-items-center" style={{ height: '200px' }}>
+                                                <div className="spinner-border" role="status">
+                                                </div>
+                                              </div>
+                                            ) : (
                                             <form className="form form-horizontal" onSubmit={handleSubmit}>
                                                 <div className="row">
                                                    
@@ -116,8 +127,8 @@ const AddAbout = (props) => {
                                                             theme={theme}
                                                             onChange={handleEditorChange}
                                                             value={formData.editorHtml}
-                                                            modules={AddAbout.modules}
-                                                            formats={AddAbout.formats}
+                                                            modules={TermsCondition.modules}
+                                                            formats={TermsCondition.formats}
                                                             bounds={'.app'}
                                                             placeholder={props.placeholder || 'Write something...'}
                                                         />
@@ -129,6 +140,7 @@ const AddAbout = (props) => {
                                                     {successMessage && <div className="col-12 mt-1"><span style={{ color: 'green' }}>{successMessage}</span></div>}
                                                 </div>
                                             </form>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
@@ -142,7 +154,7 @@ const AddAbout = (props) => {
 };
 
 // Modules and formats need to be defined
-AddAbout.modules = {
+TermsCondition.modules = {
     toolbar: [
         [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
         [{ size: [] }],
@@ -153,11 +165,11 @@ AddAbout.modules = {
     ],
 };
 
-AddAbout.formats = [
+TermsCondition.formats = [
     'header', 'font', 'size',
     'bold', 'italic', 'underline', 'strike', 'blockquote',
     'list', 'bullet', 'indent',
     'link', 'image', 'video'
 ];
 
-export default AddAbout;
+export default TermsCondition;
