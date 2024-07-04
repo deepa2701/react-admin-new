@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import apiData from '../../axiosConfig';
+import { Link } from 'react-router-dom';
 
 function Dashboard() {
 
@@ -41,45 +42,42 @@ function Dashboard() {
 
 
 
-                                <div class="col-xl-4 col-md-6 col-12">
-                                    <div class="card card-congratulation-medal">
-                                        <div class="card-body text-center">
+                                <div className="col-xl-4 col-md-6 col-12">
+                                    <div className="card card-congratulation-medal">
+                                        <div className="card-body text-center">
                                             <h3>Total Users Count</h3>
-                                            <p class="card-text font-small-3"></p>
-                                            <h3 class="mb-75 mt-2 pt-50">
+                                            <p className="card-text font-small-3"></p>
+                                            <h3 className="mb-75 mt-2 pt-50">
                                                 {dashboardData && dashboardData.users != null ? dashboardData.users : 0}
 
                                             </h3>
-                                            <a href="#" class="btn btn-primary waves-effect waves-float waves-light">View Services</a>
-
+                                            <Link to="/userlist" className="btn btn-primary waves-effect waves-float waves-light">View Users</Link>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-xl-4 col-md-6 col-12">
-                               <div class="card card-congratulation-medal">
-                                   <div class="card-body text-center">
+                                <div className="col-xl-4 col-md-6 col-12">
+                               <div className="card card-congratulation-medal">
+                                   <div className="card-body text-center">
                                        <h3>New Users Count</h3>
-                                       <p class="card-text font-small-3"></p>
-                                       <h3 class="mb-75 mt-2 pt-50">
+                                       <p className="card-text font-small-3"></p>
+                                       <h3 className="mb-75 mt-2 pt-50">
                                        {dashboardData && dashboardData.new_users != null ? dashboardData.new_users : 0}
                                        </h3>
-                                       <a href="#" class="btn btn-primary waves-effect waves-float waves-light">View Services</a>
-
+                                       <Link to="/userlist" className="btn btn-primary waves-effect waves-float waves-light">View Users</Link>
                                    </div>
                                </div>
                            </div>
 
-                           <div class="col-xl-4 col-md-6 col-12">
-                               <div class="card card-congratulation-medal">
-                                   <div class="card-body text-center">
+                           <div className="col-xl-4 col-md-6 col-12">
+                               <div className="card card-congratulation-medal">
+                                   <div className="card-body text-center">
                                        <h3>Jackpot Counts</h3>
-                                       <p class="card-text font-small-3"></p>
-                                       <h3 class="mb-75 mt-2 pt-50">
+                                       <p className="card-text font-small-3"></p>
+                                       <h3 className="mb-75 mt-2 pt-50">
                                        {dashboardData && dashboardData.jackpot_counts != null ? dashboardData.jackpot_counts : 0}
                                        </h3>
-                                       <a href="#" class="btn btn-primary waves-effect waves-float waves-light">View Services</a>
-
+                                       <Link to="/jackpot-list" className="btn btn-primary waves-effect waves-float waves-light">View Jackpot</Link>
                                    </div>
                                </div>
                            </div>
@@ -94,22 +92,21 @@ function Dashboard() {
                                        <h3 className="mb-75 mt-2 pt-50">
                                            {dashboardData && dashboardData.kyc_approvals != null ? dashboardData.kyc_approvals : 0}
                                        </h3>
-                                       <a href="#" className="btn btn-primary waves-effect waves-float waves-light">View Services</a>
+                                       <Link to="/kyc" className="btn btn-primary waves-effect waves-float waves-light">View KYC</Link>
                                    </div>
                                </div>
                            </div>
 
 
-                           <div class="col-xl-4 col-md-6 col-12">
-                               <div class="card card-congratulation-medal">
-                                   <div class="card-body text-center">
+                           <div className="col-xl-4 col-md-6 col-12">
+                               <div className="card card-congratulation-medal">
+                                   <div className="card-body text-center">
                                        <h3>Total Payments</h3>
-                                       <p class="card-text font-small-3"></p>
-                                       <h3 class="mb-75 mt-2 pt-50">
+                                       <p className="card-text font-small-3"></p>
+                                       <h3 className="mb-75 mt-2 pt-50">
                                            {dashboardData && dashboardData.payments != null ? dashboardData.payments : 0}
                                        </h3>
-                                       <a href="#" class="btn btn-primary waves-effect waves-float waves-light">View Services</a>
-
+                                       <Link to="/dashboard" className="btn btn-primary waves-effect waves-float waves-light">View Payments</Link>
                                    </div>
                                </div>
                            </div>

@@ -30,7 +30,7 @@ function AddBanner() {
         setLoading(true);
         e.preventDefault();
         const token = localStorage.getItem('token');
-        console.log("token", token);
+        // console.log("token", token);
 
         // Create FormData object
         const data = new FormData();
@@ -91,7 +91,7 @@ function AddBanner() {
                     <div className="content-body">
                         <section id="basic-horizontal-layouts">
                             <div className="row">
-                                <div className="col-md-12 col-12">
+                                <div className="col-md-8 offset-2 col-12">
                                     <div className="card">
                                         <div className="card-body">
                                         {loading ? (
@@ -106,6 +106,7 @@ function AddBanner() {
                                                         <div className="mb-1">
                                                             <label className="col-form-label" htmlFor="bannerName">
                                                                 Banner Name
+                                                                
                                                             </label>
                                                             <div className="input-group input-group-merge">
                                                                 <input
@@ -125,6 +126,7 @@ function AddBanner() {
                                                         <div className="mb-1">
                                                             <label className="col-form-label" htmlFor="image">
                                                                 Banner Image
+                                                                <span className="required-star">*</span>
                                                             </label>
                                                             <div className="input-group input-group-merge">
                                                                 <input

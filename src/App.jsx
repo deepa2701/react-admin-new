@@ -30,11 +30,17 @@ import HelpSupport from './components/setting/HelpSupport';
 import TermsCondition from './components/setting/TermsCondition';
 import JackpotList from './components/pages/jackpot/JackpotList';
 import KycList from './components/pages/kyc/KycList';
+import AddNotification from './components/pages/notification/AddNotification';
+import NotificationList from './components/pages/notification/NotificationList';
+import WinnerListing from './components/pages/jackpotResult/WinnerListing';
+import RandomResult from './components/pages/jackpotResult/RandomResult';
+import ManualResult from './components/pages/jackpotResult/ManualResult';
+import EditUser from './components/pages/user/EditUser';
 
 
 
 function App() {
-  console.log("isLogin:", isLogin());
+  // console.log("isLogin:", isLogin());
 
   return (
     <BrowserRouter>
@@ -85,15 +91,41 @@ function App() {
             </Protected>
           } />
 
+
+
+<Route path='/edit-user/:id' element={
+            <Protected>
+              <EditUser />
+            </Protected>
+          } />
+
           <Route path='/create-jackpot' element={
             <Protected>
               < CreateJackpot />
             </Protected>
           } />
 
-<Route path='/jackpot-list' element={
+          <Route path='/jackpot-list' element={
             <Protected>
               < JackpotList />
+            </Protected>
+          } />
+
+          <Route path='/winner-list' element={
+            <Protected>
+              <WinnerListing />
+            </Protected>
+          } />
+
+          <Route path='/random-result' element={
+            <Protected>
+              <RandomResult />
+            </Protected>
+          } />
+
+          <Route path='/result' element={
+            <Protected>
+              <ManualResult />
             </Protected>
           } />
 
@@ -185,11 +217,23 @@ function App() {
           } /> */}
 
 
-<Route path='/kyc' element={
+          <Route path='/kyc' element={
             <Protected>
               <KycList />
             </Protected>
-          } /> 
+          } />
+
+          <Route path='/add-notification' element={
+            <Protected>
+              <AddNotification />
+            </Protected>
+          } />
+
+          <Route path='/notification-list' element={
+            <Protected>
+              <NotificationList />
+            </Protected>
+          } />
 
 
 

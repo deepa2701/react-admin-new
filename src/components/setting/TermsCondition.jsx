@@ -28,7 +28,7 @@ const TermsCondition = (props) => {
         } catch (error) {
             console.error("Error fetching data", error);
         }
-        finally{
+        finally {
             setLoading(false);
         }
     };
@@ -113,33 +113,33 @@ const TermsCondition = (props) => {
                                 <div className="col-md-12 col-12">
                                     <div className="card">
                                         <div className="card-body">
-                                        {loading ? (
+                                            {loading ? (
                                                 <div className="d-flex justify-content-center align-items-center" style={{ height: '200px' }}>
-                                                <div className="spinner-border" role="status">
+                                                    <div className="spinner-border" role="status">
+                                                    </div>
                                                 </div>
-                                              </div>
                                             ) : (
-                                            <form className="form form-horizontal" onSubmit={handleSubmit}>
-                                                <div className="row">
-                                                   
-                                                    <div className="col-12">
-                                                        <ReactQuill
-                                                            theme={theme}
-                                                            onChange={handleEditorChange}
-                                                            value={formData.editorHtml}
-                                                            modules={TermsCondition.modules}
-                                                            formats={TermsCondition.formats}
-                                                            bounds={'.app'}
-                                                            placeholder={props.placeholder || 'Write something...'}
-                                                        />
-                                                        {errors.text && <span className="validation_error_message" style={{ color: 'red' }}>{errors.text}</span>}
+                                                <form className="form form-horizontal" onSubmit={handleSubmit}>
+                                                    <div className="row">
+
+                                                        <div className="col-12">
+                                                            <ReactQuill
+                                                                theme={theme}
+                                                                onChange={handleEditorChange}
+                                                                value={formData.editorHtml}
+                                                                modules={TermsCondition.modules}
+                                                                formats={TermsCondition.formats}
+                                                                bounds={'.app'}
+                                                                placeholder={props.placeholder || 'Write something...'}
+                                                            />
+                                                            {errors.text && <span className="validation_error_message" style={{ color: 'red' }}>{errors.text}</span>}
+                                                        </div>
+                                                        <div className="col-12">
+                                                            <button type="submit" className="btn btn-primary mt-5">Submit</button>
+                                                        </div>
+                                                        {successMessage && <div className="col-12 mt-1"><span style={{ color: 'green' }}>{successMessage}</span></div>}
                                                     </div>
-                                                    <div className="col-12">
-                                                        <button type="submit" className="btn btn-primary mt-3">Submit</button>
-                                                    </div>
-                                                    {successMessage && <div className="col-12 mt-1"><span style={{ color: 'green' }}>{successMessage}</span></div>}
-                                                </div>
-                                            </form>
+                                                </form>
                                             )}
                                         </div>
                                     </div>
@@ -160,6 +160,8 @@ TermsCondition.modules = {
         [{ size: [] }],
         ['bold', 'italic', 'underline', 'strike', 'blockquote'],
         [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+        [{ 'color': [] }, { 'background': [] }], // Color and background options
+        [{ 'align': [] }],
         ['link', 'image', 'video'],
         ['clean'] // remove formatting button
     ],
@@ -169,7 +171,8 @@ TermsCondition.formats = [
     'header', 'font', 'size',
     'bold', 'italic', 'underline', 'strike', 'blockquote',
     'list', 'bullet', 'indent',
-    'link', 'image', 'video'
+    'link', 'image', 'video',
+    'color', 'background', 'align'
 ];
 
 export default TermsCondition;

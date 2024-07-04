@@ -135,7 +135,7 @@ const HelpSupport = (props) => {
                                                         {errors.text && <span className="validation_error_message" style={{ color: 'red' }}>{errors.text}</span>}
                                                     </div>
                                                     <div className="col-12">
-                                                        <button type="submit" className="btn btn-primary mt-3">Submit</button>
+                                                        <button type="submit" className="btn btn-primary mt-5">Submit</button>
                                                     </div>
                                                     {successMessage && <div className="col-12 mt-1"><span style={{ color: 'green' }}>{successMessage}</span></div>}
                                                 </div>
@@ -160,6 +160,8 @@ HelpSupport.modules = {
         [{ size: [] }],
         ['bold', 'italic', 'underline', 'strike', 'blockquote'],
         [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+        [{ 'color': [] }, { 'background': [] }], // Color and background options
+        [{ 'align': [] }],
         ['link', 'image', 'video'],
         ['clean'] // remove formatting button
     ],
@@ -169,7 +171,8 @@ HelpSupport.formats = [
     'header', 'font', 'size',
     'bold', 'italic', 'underline', 'strike', 'blockquote',
     'list', 'bullet', 'indent',
-    'link', 'image', 'video'
+    'link', 'image', 'video',
+    'color', 'background', 'align'
 ];
 
 export default HelpSupport;

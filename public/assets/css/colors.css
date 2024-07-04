@@ -342,8 +342,10 @@ input:focus ~ .bg-light {
   color: #fff !important;
   }
 .btn-primary {
-  border-color: #7367f0 !important;
-  background-color: #7367f0 !important;
+  border: none !important;
+  /* border-color: transparent !important; */
+  /* background-color: #7367f0 !important; */
+  background: linear-gradient(118deg, #f87804, rgb(237 195 18 / 70%));
   color: #fff !important; }
 
 .btn-primary:focus, .btn-primary:active, .btn-primary.active {

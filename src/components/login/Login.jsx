@@ -58,14 +58,13 @@ function Login() {
                         <div className="card mb-0">
                             <div className="card-body">
                                 <h2 className="brand-text text-orange ms-1 ">Jackpot Pro</h2>
-                                <h4 className="card-title mb-1">Welcome to Jackpot Pro! 👋</h4>
                                 <p className="card-text mb-2">Please sign-in to your account and start the adventure</p>
 
                                 {error && <div className="alert alert-danger">{error}</div>}
 
                                 <form className="auth-login-form mt-2" onSubmit={handleSubmit}>
                                     <div className="mb-1">
-                                        <label htmlFor="login-email" className="form-label">Email</label>
+                                        <label htmlFor="login-email" className="form-label">Email<span className="required-star">*</span></label>
                                         <input
                                             value={formData.email}
                                             onChange={handleChange}
@@ -78,12 +77,15 @@ function Login() {
                                     </div>
 
                                     <div className="mb-1">
-                                        <div className="d-flex justify-content-between">
+                                        {/* <div className="d-flex justify-content-between">
                                             <label className="form-label" htmlFor="login-password">Password</label>
                                             <Link to="/forgot-password">
                                                 <small>Forgot Password?</small>
                                             </Link>
-                                        </div>
+                                        </div> */}
+                                        <div className='mb-1'>
+                                        {/* <div className="input-group input-group-merge form-password-toggle"> */}
+                                        <label htmlFor="login-password" className="form-label">Password<span className="required-star">*</span></label>
                                         <div className="input-group input-group-merge form-password-toggle">
                                             <input
                                                 type={showPassword ? "text" : "password"}
@@ -97,6 +99,7 @@ function Login() {
                                                 <i data-feather={showPassword ? "eye-off" : "eye"}></i>
                                             </span>
                                         </div>
+                                        </div>
                                     </div>
                                     <div className="mb-1">
                                         <div className="form-check">
@@ -107,7 +110,9 @@ function Login() {
                                     <button className="btn btn-primary w-100">Sign in</button>
                                 </form>
 
-                                <p className="text-center mt-2">
+
+
+                                {/* <p className="text-center mt-2">
                                     <span>New on our platform?</span>
                                     <Link to="/register">
                                         <span>Create an account</span>
@@ -116,9 +121,9 @@ function Login() {
 
                                 <div className="divider my-2">
                                     <div className="divider-text">or</div>
-                                </div>
+                                </div> */}
 
-                                <div className="auth-footer-btn d-flex justify-content-center">
+                                {/* <div className="auth-footer-btn d-flex justify-content-center">
                                     <a href="#" className="btn btn-facebook">
                                         <i data-feather="facebook"></i>
                                     </a>
@@ -131,7 +136,7 @@ function Login() {
                                     <a href="#" className="btn btn-github">
                                         <i data-feather="github"></i>
                                     </a>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

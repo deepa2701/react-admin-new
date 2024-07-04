@@ -29,60 +29,61 @@ function Profile() {
         <div>
            
 
-            <div class="content-wrapper container-xxl p-0">
-                <div class="content-header row">
-                    <div class="content-header-left col-md-9 col-12 mb-2">
-                        <div class="row breadcrumbs-top">
-                            <div class="col-12">
-                                <h2 class="content-header-title float-start mb-0">Profile</h2>
-                                <div class="breadcrumb-wrapper">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a>
+            <div className="content-wrapper container-xxl p-0">
+                <div className="content-header row">
+                    <div className="content-header-left col-md-9 col-12 mb-2">
+                        {/* <div className="row breadcrumbs-top">
+                            <div className="col-12">
+                                <h2 className="content-header-title float-start mb-0">Profile</h2>
+                                <div className="breadcrumb-wrapper">
+                                    <ol className="breadcrumb">
+                                        <li className="breadcrumb-item">
+                                            <Link to="/dashboard" >Home</Link>
                                         </li>
-                                        <li class="breadcrumb-item"><a href="#">Pages</a>
+                                        <li className="breadcrumb-item"><a href="#">Pages</a>
                                         </li>
-                                        <li class="breadcrumb-item active">Profile
+                                        <li className="breadcrumb-item active">Profile
                                         </li>
                                     </ol>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     
                 </div>
-                <div class="content-body ">
+                <div className="content-body ">
                     <div id="user-profile">
                         
 
                        <section id="profile-info">
-                            <div class="row">
+                            <div className="row">
 
-                            <div class="col-lg-6 col-12 offset-4 mt-5">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="mb-75">About</h5>
-                                        {/* <p class="card-text">
+                            <div className="col-lg-6 col-12 offset-4 mt-5">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="mb-75">About</h5>
+                                        {/* <p className="card-text">
                                             Tart I love sugar plum I love oat cake. Sweet ⭐️ roll caramels I love jujubes. Topping cake wafer.
                                         </p> */}
-                                        <div class="mt-2  d-flex">
-                                            <h5 class="mb-75">Name:</h5>
-                                            <span class="card-text">{user.name}</span>
+                                        <div className="mt-2  d-flex">
+                                            <h5 className="mb-75">Name:</h5>
+                                            <span className="card-text">{user.name}</span>
                                         </div>
-                                        <div class="mt-2 d-flex">
-                                            <h5 class="mb-75">Email:</h5>
-                                            <p class="card-text">{user.email}</p>
+                                        <div className="mt-2 d-flex">
+                                            <h5 className="mb-75">Email:</h5>
+                                            <p className="card-text">{user.email}</p>
                                         </div>
-                                        <div class="mt-2 d-flex">
-                                            <h5 class="mb-75">Username:</h5>
-                                            <p class="card-text">{user.username}</p>
+                                        <div className="mt-2 d-flex">
+                                            <h5 className="mb-75">Username:</h5>
+                                            <p className="card-text">{user.username}</p>
                                         </div>
-                                        <div class="mt-2 d-flex">
-                                            <h5 class="mb-50">Mobile Number:</h5>
-                                            <p class="card-text mb-0">{user.mobile_number}</p>
+                                        <div className="mt-2 d-flex">
+                                            <h5 className="mb-50">Mobile Number:</h5>
+                                            <p className="card-text mb-0">{user.mobile_number}</p>
                                         </div>
-                                        <div class="mt-2 d-flex">
-                                            <h5 class="mb-50">Country:</h5>
-                                            <p class="card-text mb-0">{user.country.name}</p>
+                                        <div className="mt-2 d-flex">
+                                            <h5 className="mb-50">Country:</h5>
+                                            <p className="card-text mb-0">{user.country.name}</p>
                                         </div>
                                     </div>
                                 </div>
